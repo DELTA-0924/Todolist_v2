@@ -34,6 +34,11 @@ public class TaskController {
 
     private final TaskReposetory taskReposetory;
     private TaskService taskService;
+    @Operation(summary = "get task",description = "this endpoint got a  task by id which stay in database ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved list"),
+            @ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found")
+    })
     @GetMapping("/")
     public ResponseEntity<TaskResponce> getAllTasks(@RequestParam Long id) {
         var taskResponse=taskService.GetTaskById(id);
